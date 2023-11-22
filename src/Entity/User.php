@@ -5,6 +5,7 @@ namespace App\Entity;
 Class User {
     protected $name;
     protected $email;
+    protected $date;
 
     public function getName() 
     {
@@ -14,6 +15,10 @@ Class User {
     {
         return $this->email;
     }
+    public function getDate() 
+    {
+        return $this->date;
+    }
     public function setName ($name)
     {
         $this->name = $name;
@@ -21,6 +26,10 @@ Class User {
     public function setEmail ($email)
     {
         $this->email = $email;
+    }
+    public function setDate ($date)
+    {
+        $this->date = $date;
     }
 
 }
