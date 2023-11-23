@@ -2,50 +2,21 @@
 
 nameSpace App\Controller;
 
+use App\Service\Greeter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController{
-    /**
-     * @Route("hello/{_locale}")
-     */
-    function hello(Request $request)
-    {
-        $locale = $request->getLocale();
-        return new Response('Bonjour '. $locale);
-    }
-
-    /**
-     * @Route("hello/{param}", name="helloParam")
-     */
-    function helloDefault($param)
-    {
-        return new Response('Hello ' . $param .' !');
-    }
 
     /**
      * @Route("hello")
      */
-    function helloSansRien()
+    function hello(Greeter $greeter)
     {
-        return new Response('Hello ');
+        $message = $greeter->greet();
+        return new Response($message);
     }
-
-    
-
-    /**function hello(Request $request)  
-    {
-        $params = $request->query->all();
-        $string = "Les paramètres sont : <br />";
-
-        foreach($params as $key => $value) 
-        {
-            $string = $string . '-' . $key . ':' . $value . '<br />';
-            return new Response($string);
-        }
-    }*/
 
     
 }
